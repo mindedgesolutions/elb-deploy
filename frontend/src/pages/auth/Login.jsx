@@ -7,7 +7,7 @@ import { SubmitBtn } from "../../components";
 import customFetch from "../../utils/customFetch";
 import { splitErrors } from "../../utils/showErrors";
 import { toast } from "react-toastify";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 import GoogleLoginBtn from "../../components/GoogleLoginBtn";
 
 // Action starts ------
@@ -150,11 +150,11 @@ const Login = () => {
                   </Link>
                 </div>
                 <div className="col">
-                  {/* <Link to={`#`} className="btn w-100">
-                    <FcGoogle size={20} className="me-2" />
+                  <Link to={`#`} className="btn w-100">
+                    <FaGoogle size={20} className="me-2" />
                     Login with Google
-                  </Link> */}
-                  <GoogleLoginBtn />
+                  </Link>
+                  {/* <GoogleLoginBtn /> */}
                 </div>
               </div>
             </div>
