@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 
 import { store } from "./store";
 import { Provider } from "react-redux";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
