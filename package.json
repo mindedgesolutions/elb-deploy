@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup-project": "npm i && cd ../frontend && npm i",
-    "setup-production-app": "npm i && cd ../frontend && npm i && npm run build",
+    "setup-project": "npm i && cd ./frontend && npm i",
+    "setup-production-app": "npm i && cd ./frontend && npm i && npm run build",
     "server": "nodemon server",
-    "client": "cd ../frontend && npm run dev",
+    "client": "cd ./frontend && npm run dev",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "build:staging": "env-cmd -f .env.staging npm run build"
   },

@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // app.use(express.static(path.resolve(__dirname, "./public/forntend")));
-app.use(express.static(path.resolve(__dirname, "../frontend/dist")));
+app.use(express.static(path.resolve(__dirname, "./frontend/dist")));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -45,7 +45,7 @@ app.use("/api/v1/users", protectRoute, userRoute);
 
 app.get("*", (req, res) => {
   // res.sendFile(path.resolve(__dirname, "./public/forntend", "index.html"));
-  res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./frontend/dist", "index.html"));
 });
 
 const port = process.env.APP_PORT || 3001;
