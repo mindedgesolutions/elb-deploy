@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "setup-project": "npm i && cd ../frontend && npm i",
+    "setup-production-app": "npm i && cd ../frontend && npm i && npm run build",
     "server": "nodemon server",
     "client": "cd ../frontend && npm run dev",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
