@@ -11,8 +11,6 @@ import nodemailer from "nodemailer";
 // ------
 export const register = async (req, res) => {
   const { firstName, lastName, email, mobile, password, tnc } = req.body;
-  console.log(firstName, lastName, email, mobile, password, tnc);
-  return;
   const createdAt = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
   const updatedAt = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
   const userUuid = uuidv4();
@@ -74,7 +72,7 @@ export const login = async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     expires: expiryDate,
-    secure: process.env.APP_ENV === "production",
+    // secure: process.env.APP_ENV === "production",
   });
 
   res.status(StatusCodes.ACCEPTED).json({ data: user.rows[0] });
