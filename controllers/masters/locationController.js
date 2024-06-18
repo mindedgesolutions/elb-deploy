@@ -65,7 +65,7 @@ export const addLocation = async (req, res) => {
       throw new BadRequestError(`State code not found`);
     }
     const data = await pool.query(
-      `insert into master_locations(city, state_code, state, slug) values('$1', $2, '$3', '$4')`,
+      `insert into master_locations(city, state_code, state, slug) values($1, $2, $3, $4)`,
       [city.trim(), Number(state.rows[0].state_code), stateName, citySlug]
     );
 
@@ -88,7 +88,7 @@ export const updateLocation = async (req, res) => {
     await pool.query(`BEGIN`);
 
     const state = await pool.query(
-      `select state_code from master_locations where state='$1'`,
+      `select state_code from master_locations where state=$1`,
       [stateName]
     );
 
@@ -96,7 +96,7 @@ export const updateLocation = async (req, res) => {
       throw new BadRequestError(`State code not found`);
     }
     const data = await pool.query(
-      `update master_locations set city='$1', state_code=$2, state='$3', slug='$4' where id=$5`,
+      `update master_locations set city=$1, state_code=$2, state=$3, slug=$4 where id=$5`,
       [city.trim(), Number(state.rows[0].state_code), stateName, citySlug, id]
     );
 

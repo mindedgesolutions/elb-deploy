@@ -72,7 +72,7 @@ export const addModel = async (req, res) => {
   const timeStamp = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
   const insert = await pool.query(
-    `insert into master_make_models(cat_id, brand_id, model_name, model_slug, created_at, updated_at) values($1, $2, '$3', '$4', $5, $6)`,
+    `insert into master_make_models(cat_id, brand_id, model_name, model_slug, created_at, updated_at) values($1, $2, $3, $4, $5, $6)`,
     [catId, brandId, modelName.trim(), modelSlug, timeStamp, timeStamp]
   );
 
@@ -87,7 +87,7 @@ export const updateModel = async (req, res) => {
   const timeStamp = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
   const update = await pool.query(
-    `update master_make_models set cat_id=$1, brand_id=$2, model_name='$3', model_slug='$4', updated_at=$5 where id=$6`,
+    `update master_make_models set cat_id=$1, brand_id=$2, model_name=$3, model_slug=$4, updated_at=$5 where id=$6`,
     [catId, brandId, modelName.trim(), modelSlug, timeStamp, id]
   );
 

@@ -19,7 +19,7 @@ export const register = async (req, res) => {
   const roleId = 3;
 
   const data = await pool.query(
-    `insert into master_users(first_name, last_name, email, mobile, password, created_at, updated_at, uuid, slug, role_id) values('$1', '$2', '$3', '$4', '$5', $6, $7, '$8', '$9', $10) returning *`,
+    `insert into master_users(first_name, last_name, email, mobile, password, created_at, updated_at, uuid, slug, role_id) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`,
     [
       firstName.trim(),
       lastName.trim(),
@@ -42,14 +42,14 @@ export const login = async (req, res) => {
   const { username, password, remember } = req.body;
 
   const checkUsername = await pool.query(
-    `select count(*) from master_users where email='$1' and is_active=true`,
+    `select count(*) from master_users where email=$1 and is_active=true`,
     [username]
   );
   if (Number(checkUsername.rows[0].count) === 0)
     throw new BadRequestError(`Incorrect username`);
 
   const user = await pool.query(
-    `select * from master_users where email='$1' and is_active=true`,
+    `select * from master_users where email=$1 and is_active=true`,
     [username]
   );
 
@@ -93,7 +93,7 @@ export const currentUser = async (req, res) => {
   const { uuid } = req.user;
 
   const user = await pool.query(
-    `select master_users.*, role_master.role from master_users join role_master on master_users.role_id = role_master.id where master_users.uuid='$1'`,
+    `select master_users.*, role_master.role from master_users join role_master on master_users.role_id = role_master.id where master_users.uuid=$1`,
     [uuid]
   );
 
@@ -124,12 +124,12 @@ export const forgotPassword = async (req, res) => {
     const tokenEnc = await hashPassword(resetToken.toString());
     const createdAt = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
-    await pool.query(`delete from password_reset_tokens where email='$1'`, [
+    await pool.query(`delete from password_reset_tokens where email=$1`, [
       email,
     ]);
 
     await pool.query(
-      `insert into password_reset_tokens(email, email_enc, token, token_enc, created_at) values('$1', '$2', '$3', '$4', $5)`,
+      `insert into password_reset_tokens(email, email_enc, token, token_enc, created_at) values($1, $2, $3, $4, $5)`,
       [email, emailEnc, resetToken, tokenEnc, createdAt]
     );
 
@@ -174,17 +174,17 @@ export const resetPassword = async (req, res) => {
     const newPassword = await hashPassword(password);
 
     const userEmail = await pool.query(
-      `select email from password_reset_tokens where token='$1' and email_enc='$2'`,
+      `select email from password_reset_tokens where token=$1 and email_enc=$2`,
       [otp, emailEnc]
     );
 
-    await pool.query(`update master_users set password='$1' where email='$2'`, [
+    await pool.query(`update master_users set password=$1 where email=$2`, [
       newPassword,
       userEmail.rows[0].email,
     ]);
 
     await pool.query(
-      `delete from password_reset_tokens where token='$1' and token_enc='$2' and email_enc='$3'`,
+      `delete from password_reset_tokens where token=$1 and token_enc=$2 and email_enc=$3`,
       [otp, tokenEnc, emailEnc]
     );
 

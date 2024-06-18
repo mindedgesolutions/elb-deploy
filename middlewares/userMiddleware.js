@@ -32,7 +32,7 @@ export const validateUser = withValidationErrors([
       const append = userId ? ` and id!=$2` : ``;
       const values = userId ? [value, userId] : [value];
       const check = await pool.query(
-        `select count(*) from master_users where email='$1' ${append}`,
+        `select count(*) from master_users where email=$1 ${append}`,
         values
       );
       if (Number(check.rows[0].count) > 0) {
@@ -71,7 +71,7 @@ export const validateUser = withValidationErrors([
           [Number(value)]
         );
         if (Number(check.rows[0].count) === 0) {
-          throw new BadRequestError(`Don't try to fuck with the system Dude!!`);
+          throw new BadRequestError(`Dont try to fuck with the system Dude!!`);
         }
         return true;
       }

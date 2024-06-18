@@ -84,7 +84,7 @@ export const addCategory = async (req, res) => {
   const categorySlug = slug(category);
 
   const data = await pool.query(
-    `insert into master_categories(category, slug, parent_id, created_at, updated_at, has_brand) values('$1', '$2', $3, $4, $5, $6)`,
+    `insert into master_categories(category, slug, parent_id, created_at, updated_at, has_brand) values($1, $2, $3, $4, $5, $6)`,
     [category.trim(), categorySlug, pid, timeStamp, timeStamp, hasBrand]
   );
 
@@ -102,7 +102,7 @@ export const editCategory = async (req, res) => {
   const categorySlug = slug(category);
 
   const data = await pool.query(
-    `update master_categories set category='$1', slug='$2', parent_id=$3, updated_at=$4, has_brand=$6 where id=$5`,
+    `update master_categories set category=$1, slug=$2, parent_id=$3, updated_at=$4, has_brand=$6 where id=$5`,
     [category.trim(), categorySlug, pid, timeStamp, id, hasBrand]
   );
 

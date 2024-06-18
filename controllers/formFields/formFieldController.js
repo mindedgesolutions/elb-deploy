@@ -9,7 +9,7 @@ export const pageFormFields = async (req, res) => {
   const { page, parent } = req.query;
   const pagination = paginationLogic(page, null);
 
-  const searchDrp = parent ? ` and ff.cat_id='${parent}'` : ``;
+  const searchDrp = parent ? ` and ff.cat_id=${parent}` : ``;
 
   const data = await pool.query(
     `select

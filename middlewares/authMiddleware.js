@@ -35,12 +35,11 @@ export const mindUrOwnPage = async (req, res, next) => {
   const { token } = req.cookies;
   const { uuid } = verifyJWT(token);
   const { slug } = req.params;
-  const user = await pool.query(
-    `select slug from master_users where uuid='$1'`,
-    [uuid]
-  );
+  const user = await pool.query(`select slug from master_users where uuid=$1`, [
+    uuid,
+  ]);
   if (slug !== user.rows[0].slug) {
-    throw new BadRequestError(`You're in the wrong page!`);
+    throw new BadRequestError(`You are in the wrong page!`);
   }
   next();
 };
@@ -78,7 +77,7 @@ export const validateRegister = withValidationErrors([
     .bail()
     .custom(async (value) => {
       const check = await pool.query(
-        `select count(*) from master_users where email='$1'`,
+        `select count(*) from master_users where email=$1`,
         [value]
       );
       if (Number(check.rows[0].count) > 0) {
@@ -95,7 +94,7 @@ export const validateRegister = withValidationErrors([
     .bail()
     .custom(async (value) => {
       const check = await pool.query(
-        `select count(*) from master_users where mobile='$1'`,
+        `select count(*) from master_users where mobile=$1`,
         [value]
       );
       if (Number(check.rows[0].count) > 0) {
@@ -126,7 +125,7 @@ export const validateRegister = withValidationErrors([
     .custom((value, { req }) => {
       const { password } = req.body;
       if (value !== password) {
-        throw new BadRequestError(`Passwords don't match`);
+        throw new BadRequestError(`Passwords do not match`);
       }
       return true;
     }),
@@ -148,11 +147,11 @@ export const validateForgotPass = withValidationErrors([
     .bail()
     .custom(async (value) => {
       const check = await pool.query(
-        `select count(id) from master_users where email='$1' and is_active=true`,
+        `select count(id) from master_users where email=$1 and is_active=true`,
         [value]
       );
       if (value && Number(check.rows[0].count) === 0) {
-        throw new BadRequestError(`Email doesn't exist`);
+        throw new BadRequestError(`Email does not exist`);
       }
       return true;
     }),
@@ -194,7 +193,7 @@ export const validateResetPass = withValidationErrors([
     .custom((value, { req }) => {
       const { password } = req.body;
       if (value !== password) {
-        throw new BadRequestError(`Passwords don't match`);
+        throw new BadRequestError(`Passwords do not match`);
       }
       return true;
     }),

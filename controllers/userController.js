@@ -11,7 +11,7 @@ export const allUsers = async (req, res) => {
   const pagination = paginationLogic(page, null);
 
   const searchStr = search
-    ? ` and (master_users.first_name ilike '%${search.trim()}%' or master_users.last_name ilike '%${search.trim()}%' or master_users.email ilike '%${search.trim()}%' or master_users.mobile ilike '%${search.trim()}%')`
+    ? ` and (master_users.first_name ilike %${search.trim()}% or master_users.last_name ilike '%${search.trim()}%' or master_users.email ilike '%${search.trim()}%' or master_users.mobile ilike '%${search.trim()}%')`
     : ``;
   const searchDrp = role ? ` and master_users.role_id=${role}` : ``;
 
@@ -38,7 +38,7 @@ export const allUsers = async (req, res) => {
 export const getUser = async (req, res) => {
   const { uuid } = req.params;
 
-  const user = await pool.query(`select * from master_users where uuid='$1'`, [
+  const user = await pool.query(`select * from master_users where uuid=$1`, [
     uuid,
   ]);
 
@@ -55,7 +55,7 @@ export const addNewUser = async (req, res) => {
   const userSlug = await generateSlug(firstName.trim(), lastName.trim());
 
   const data = await pool.query(
-    `insert into master_users(first_name, last_name, email, mobile, password, created_at, updated_at, uuid, slug, role_id) values('$1', '$2', '$3', '$4', '$5', $6, $7, '$8', '$9', $10) returning *`,
+    `insert into master_users(first_name, last_name, email, mobile, password, created_at, updated_at, uuid, slug, role_id) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`,
     [
       firstName.trim(),
       lastName.trim(),
@@ -81,7 +81,7 @@ export const updateUser = async (req, res) => {
   const newSlug = await generateSlug(firstName.trim(), lastName.trim());
 
   const data = await pool.query(
-    `update master_users set first_name='$1', last_name='$2', email='$3', mobile='$4', role_id=$5, updated_at=$7, slug='$8' where id=$6 returning *`,
+    `update master_users set first_name=$1, last_name=$2, email=$3, mobile=$4, role_id=$5, updated_at=$7, slug=$8 where id=$6 returning *`,
     [
       firstName.trim(),
       lastName.trim(),
