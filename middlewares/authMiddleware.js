@@ -35,9 +35,10 @@ export const mindUrOwnPage = async (req, res, next) => {
   const { token } = req.cookies;
   const { uuid } = verifyJWT(token);
   const { slug } = req.params;
-  const user = await pool.query(`select slug from master_users where uuid=$1`, [
-    uuid,
-  ]);
+  const user = await pool.query(
+    `select slug from master_users where uuid='$1'`,
+    [uuid]
+  );
   if (slug !== user.rows[0].slug) {
     throw new BadRequestError(`You're in the wrong page!`);
   }

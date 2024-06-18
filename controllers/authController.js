@@ -72,7 +72,7 @@ export const login = async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     expires: expiryDate,
-    // secure: process.env.APP_ENV === "production",
+    secure: process.env.APP_ENV === "production",
   });
 
   res.status(StatusCodes.ACCEPTED).json({ data: user.rows[0] });
@@ -93,7 +93,7 @@ export const currentUser = async (req, res) => {
   const { uuid } = req.user;
 
   const user = await pool.query(
-    `select master_users.*, role_master.role from master_users join role_master on master_users.role_id = role_master.id where master_users.uuid=$1`,
+    `select master_users.*, role_master.role from master_users join role_master on master_users.role_id = role_master.id where master_users.uuid='$1'`,
     [uuid]
   );
 

@@ -2,7 +2,7 @@ import slug from "slug";
 import pool from "../db.js";
 
 export const getUserId = async (uuid) => {
-  const user = await pool.query(`select id from master_users where uuid=$1`, [
+  const user = await pool.query(`select id from master_users where uuid='$1'`, [
     uuid,
   ]);
   return user.rows[0].uuid;

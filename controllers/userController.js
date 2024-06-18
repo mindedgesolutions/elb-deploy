@@ -38,7 +38,7 @@ export const allUsers = async (req, res) => {
 export const getUser = async (req, res) => {
   const { uuid } = req.params;
 
-  const user = await pool.query(`select * from master_users where uuid=$1`, [
+  const user = await pool.query(`select * from master_users where uuid='$1'`, [
     uuid,
   ]);
 
