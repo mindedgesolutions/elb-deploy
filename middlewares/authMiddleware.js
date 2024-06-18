@@ -19,14 +19,14 @@ export const validateLogin = withValidationErrors([
 export const protectRoute = async (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
-    throw new UnauthenticatedError(`Login required`);
+    throw new UnauthenticatedError(`No token found! Login required`);
   }
   try {
     const { uuid } = verifyJWT(token);
     req.user = { uuid };
     next();
   } catch (error) {
-    throw new UnauthenticatedError(`Login required`);
+    throw new UnauthenticatedError(`User does not exist! Login required`);
   }
 };
 
