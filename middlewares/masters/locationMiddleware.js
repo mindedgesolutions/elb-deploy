@@ -20,7 +20,7 @@ export const validateLocation = withValidationErrors([
       const append = id ? ` and id!=$3` : ``;
       const values = id ? [citySlug, stateName, id] : [citySlug, stateName];
       const check = await pool.query(
-        `select count(id) from master_locations where slug=$1 and state=$2 ${append}`,
+        `select count(id) from master_locations where slug='$1' and state='$2' ${append}`,
         values
       );
       if (Number(check.rows[0].count) > 0) {

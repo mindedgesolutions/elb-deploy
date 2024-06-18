@@ -28,7 +28,7 @@ export const validateAddCategory = withValidationErrors([
       const values = id ? [cslug, id] : [cslug];
 
       const check = await pool.query(
-        `select count(id) from master_categories where slug=$1 ${append}`,
+        `select count(id) from master_categories where slug='$1' ${append}`,
         values
       );
       if (Number(check.rows[0].count) > 0) {

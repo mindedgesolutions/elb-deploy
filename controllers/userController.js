@@ -55,7 +55,7 @@ export const addNewUser = async (req, res) => {
   const userSlug = await generateSlug(firstName.trim(), lastName.trim());
 
   const data = await pool.query(
-    `insert into master_users(first_name, last_name, email, mobile, password, created_at, updated_at, uuid, slug, role_id) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`,
+    `insert into master_users(first_name, last_name, email, mobile, password, created_at, updated_at, uuid, slug, role_id) values('$1', '$2', '$3', '$4', '$5', $6, $7, '$8', '$9', $10) returning *`,
     [
       firstName.trim(),
       lastName.trim(),
@@ -81,7 +81,7 @@ export const updateUser = async (req, res) => {
   const newSlug = await generateSlug(firstName.trim(), lastName.trim());
 
   const data = await pool.query(
-    `update master_users set first_name=$1, last_name=$2, email=$3, mobile=$4, role_id=$5, updated_at=$7, slug=$8 where id=$6 returning *`,
+    `update master_users set first_name='$1', last_name='$2', email='$3', mobile='$4', role_id=$5, updated_at=$7, slug='$8' where id=$6 returning *`,
     [
       firstName.trim(),
       lastName.trim(),

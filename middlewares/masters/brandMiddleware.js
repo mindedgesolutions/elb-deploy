@@ -19,7 +19,7 @@ export const validateAddBrand = withValidationErrors([
       const append = id ? ` and id!=$2` : ``;
       const values = id ? [bslug, parentId, id] : [bslug, parentId];
       const check = await pool.query(
-        `select count(id) from master_brands where slug=$1 and cat_id=$2 ${append}`,
+        `select count(id) from master_brands where slug='$1' and cat_id=$2 ${append}`,
         values
       );
       if (check.rows[0].count > 0) {

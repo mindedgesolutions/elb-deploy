@@ -78,7 +78,7 @@ export const validateRegister = withValidationErrors([
     .bail()
     .custom(async (value) => {
       const check = await pool.query(
-        `select count(*) from master_users where email=$1`,
+        `select count(*) from master_users where email='$1'`,
         [value]
       );
       if (Number(check.rows[0].count) > 0) {
@@ -95,7 +95,7 @@ export const validateRegister = withValidationErrors([
     .bail()
     .custom(async (value) => {
       const check = await pool.query(
-        `select count(*) from master_users where mobile=$1`,
+        `select count(*) from master_users where mobile='$1'`,
         [value]
       );
       if (Number(check.rows[0].count) > 0) {
@@ -148,7 +148,7 @@ export const validateForgotPass = withValidationErrors([
     .bail()
     .custom(async (value) => {
       const check = await pool.query(
-        `select count(id) from master_users where email=$1 and is_active=true`,
+        `select count(id) from master_users where email='$1' and is_active=true`,
         [value]
       );
       if (value && Number(check.rows[0].count) === 0) {

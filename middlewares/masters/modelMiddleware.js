@@ -23,7 +23,7 @@ export const validateModel = withValidationErrors([
         ? [catId, brandId, modelSlug, id]
         : [catId, brandId, modelSlug];
       const check = await pool.query(
-        `select count(id) from master_make_models where cat_id=$1 and brand_id=$2 and model_slug=$3 ${append}`,
+        `select count(id) from master_make_models where cat_id=$1 and brand_id=$2 and model_slug='$3' ${append}`,
         values
       );
       if (Number(check.rows[0].count) > 0) {

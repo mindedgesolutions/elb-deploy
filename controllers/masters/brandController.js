@@ -55,7 +55,7 @@ export const addBrand = async (req, res) => {
   const timeStamp = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
   const data = await pool.query(
-    `insert into master_brands(brand, slug, cat_id, created_at, updated_at) values($1, $2, $3, $4, $5)`,
+    `insert into master_brands(brand, slug, cat_id, created_at, updated_at) values('$1', '$2', $3, $4, $5)`,
     [brand.trim(), brandSlug, parentId, timeStamp, timeStamp]
   );
   res.status(StatusCodes.CREATED).json({ data: `success` });
@@ -80,7 +80,7 @@ export const editBrand = async (req, res) => {
   const timeStamp = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
   const data = await pool.query(
-    `update master_brands set brand=$1, slug=$2, cat_id=$3, updated_at=$4 where id=$5`,
+    `update master_brands set brand='$1', slug='$2', cat_id=$3, updated_at=$4 where id=$5`,
     [brand.trim(), brandSlug, parentId, timeStamp, id]
   );
   res.status(StatusCodes.ACCEPTED).json({ data: `success` });
