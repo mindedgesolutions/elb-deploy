@@ -140,7 +140,7 @@ const Login = () => {
             <div className="text-center text-muted mt-3">
               Don't have account yet? <Link to="/sign-up">Sign up</Link>
             </div>
-            <div className="hr-text">or</div>
+            {/* <div className="hr-text">or</div>
             <div className="card-body">
               <div className="row">
                 <div className="col">
@@ -154,10 +154,10 @@ const Login = () => {
                     <FaGoogle size={20} className="me-2" />
                     Login with Google
                   </Link>
-                  {/* <GoogleLoginBtn /> */}
                 </div>
               </div>
-            </div>
+            </div> */}
+            {/* <GoogleLoginBtn /> */}
           </div>
         </div>
         <div className="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
