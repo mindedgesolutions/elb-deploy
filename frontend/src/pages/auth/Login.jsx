@@ -8,7 +8,6 @@ import customFetch from "../../utils/customFetch";
 import { splitErrors } from "../../utils/showErrors";
 import { toast } from "react-toastify";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import GoogleLoginBtn from "../../components/GoogleLoginBtn";
 
 // Action starts ------
 export const action = async ({ request }) => {
@@ -157,7 +156,6 @@ const Login = () => {
                 </div>
               </div>
             </div> */}
-            {/* <GoogleLoginBtn /> */}
           </div>
         </div>
         <div className="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
