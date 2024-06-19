@@ -26,3 +26,9 @@ export { default as LocationDelete } from "./admin/masters/LocationDelete";
 export { default as FieldAddEdit } from "./admin/formFields/FieldAddEdit";
 export { default as FieldDelete } from "./admin/formFields/FieldDelete";
 export { default as FieldOptions } from "./admin/formFields/FieldOptions";
+
+// Website components ------
+export { default as WbTopnav } from "./website/WbTopnav";
+export { default as WbSecondNav } from "./website/WbSecondNav";
+export { default as WbLogoSvg } from "./website/WbLogoSvg";
+export { default as WbHeroSection } from "./website/landing/WbHeroSection";

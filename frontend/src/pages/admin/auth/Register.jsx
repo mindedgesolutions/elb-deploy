@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../../assets/static/logo.svg";
+import logo from "../../../assets/admin/static/logo.svg";
 import { Form, Link, redirect, useNavigation } from "react-router-dom";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { SubmitBtn } from "../../../components";

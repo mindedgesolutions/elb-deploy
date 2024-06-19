@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from "../../../assets/static/logo.svg";
-import loginBg from "../../../assets/static/login-bg.jpg";
+import logo from "../../../assets/admin/static/logo.svg";
+import loginBg from "../../../assets/admin/static/login-bg.jpg";
 import { Form, Link, redirect, useNavigation } from "react-router-dom";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { SubmitBtn } from "../../../components";

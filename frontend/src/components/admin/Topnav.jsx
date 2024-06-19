@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { IoIosSunny } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
-import avatar from "../../assets/static/avatars/000m.jpg";
+import avatar from "../../assets/admin/static/avatars/000m.jpg";
 import { useSelector } from "react-redux";
 
 const Topnav = ({ logout }) => {

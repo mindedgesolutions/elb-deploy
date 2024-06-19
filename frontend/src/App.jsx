@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as Elb from "./pages";
 import { store } from "./store";
-import Landing from "./pages/admin/Landing";
+import Landing from "./pages/website/Landing";
 
 // Actions ------
 import { action as loginAction } from "./pages/admin/auth/Login";
@@ -13,6 +13,16 @@ import { loader as layoutLoader } from "./pages/admin/Layout";
 import { loader as adminLoader } from "./pages/admin/LayoutAdmin";
 
 const router = createBrowserRouter([
+  // Website routes ------
+  {
+    path: "/",
+    element: <Elb.LayoutWebsite />,
+    children: [
+      { index: true, element: <Landing /> },
+      { path: "/about", element: <Elb.WebsiteAbout /> },
+    ],
+  },
+  // Admin routes ------
   {
     path: "/sign-in",
     element: <Elb.Login />,
@@ -36,7 +46,6 @@ const router = createBrowserRouter([
     element: <Elb.ResetPassword />,
     errorElement: <Elb.Error />,
   },
-  { path: "/", element: <Landing /> },
   {
     element: <Elb.Layout />,
     errorElement: <Elb.Error />,

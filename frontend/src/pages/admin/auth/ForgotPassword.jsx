@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../../assets/static/logo.svg";
+import logo from "../../../assets/admin/static/logo.svg";
 import { Form, Link, useNavigation } from "react-router-dom";
 import { GoMail } from "react-icons/go";
 import BtnSpinner from "../../../components/admin/BtnSpinner";

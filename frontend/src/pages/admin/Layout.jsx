@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet, redirect, useNavigate } from "react-router-dom";
 
-import "../../assets/dist/css/tabler.min.css";
-import "../../assets/dist/css/demo.min.css";
+import "../../assets/admin/dist/css/tabler.min.css";
+import "../../assets/admin/dist/css/demo.min.css";
 
-import "../../assets/dist/js/tabler.min.js";
-import "../../assets/dist/js/demo.min.js";
+import "../../assets/admin/dist/js/tabler.min.js";
+import "../../assets/admin/dist/js/demo.min.js";
 
 import customFetch from "../../utils/customFetch.js";
 import { splitErrors } from "../../utils/showErrors.jsx";

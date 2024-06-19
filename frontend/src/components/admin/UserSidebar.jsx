@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/static/logo-white.svg";
+import logo from "../../assets/admin/static/logo-white.svg";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../../assets/static/logo.svg";
+import logo from "../../../assets/admin/static/logo.svg";
 import { Form, Link, useNavigate, useParams } from "react-router-dom";
 import { SubmitBtn } from "../../../components";
 import { splitErrors } from "../../../utils/showErrors";
