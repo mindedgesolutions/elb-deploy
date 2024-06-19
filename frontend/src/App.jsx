@@ -1,16 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as Elb from "./pages";
 import { store } from "./store";
-import Landing from "./pages/Landing";
+import Landing from "./pages/admin/Landing";
 
 // Actions ------
-import { action as loginAction } from "./pages/auth/Login";
-import { action as registerAction } from "./pages/auth/Register";
-import { action as forgotPasswordAction } from "./pages/auth/ForgotPassword";
+import { action as loginAction } from "./pages/admin/auth/Login";
+import { action as registerAction } from "./pages/admin/auth/Register";
+import { action as forgotPasswordAction } from "./pages/admin/auth/ForgotPassword";
 
 // Loaders ------
-import { loader as layoutLoader } from "./pages/Layout";
-import { loader as adminLoader } from "./pages/LayoutAdmin";
+import { loader as layoutLoader } from "./pages/admin/Layout";
+import { loader as adminLoader } from "./pages/admin/LayoutAdmin";
 
 const router = createBrowserRouter([
   {
