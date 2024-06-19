@@ -62,7 +62,6 @@ const FormFields = () => {
         totalPages: response?.data?.meta?.totalPages,
         currentPage: response?.data?.meta?.currentPage,
       };
-      console.log(response?.data?.data?.rows);
 
       dispatch(setListFormFields(response?.data?.data?.rows));
       dispatch(setTotal(data));
