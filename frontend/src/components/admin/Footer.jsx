@@ -11,7 +11,7 @@ const Footer = () => {
             <ul className="list-inline list-inline-dots mb-0">
               <li className="list-inline-item">
                 Copyright &copy; {new Date().getFullYear()}{" "}
-                <Link to="#" className="link-secondary">
+                <Link to={`#`} className="link-secondary">
                   Easy Lending Buddy
                 </Link>
                 . All rights reserved.

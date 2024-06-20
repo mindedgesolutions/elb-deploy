@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <Elb.LayoutWebsite />,
     children: [
       { index: true, element: <Landing /> },
-      { path: "/about", element: <Elb.WebsiteAbout /> },
+      { path: "/about", element: <Elb.WbAbout /> },
     ],
   },
   // Admin routes ------

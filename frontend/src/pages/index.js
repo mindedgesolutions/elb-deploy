@@ -22,4 +22,4 @@ export { default as FormFields } from "./admin/formFields/FormFields";
 // Website pages ------
 export { default as LayoutWebsite } from "./website/LayoutWebsite";
 export { default as Landing } from "./website/Landing";
-export { default as WebsiteAbout } from "./website/WebsiteAbout";
+export { default as WbAbout } from "./website/WbAbout";

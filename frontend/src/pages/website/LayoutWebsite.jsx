@@ -5,7 +5,7 @@ import "../../assets/website/css/bootstrap.min.css";
 import "../../assets/website/css/style.css";
 import "../../assets/website/css/resposive.css";
 
-import { WbSecondNav, WbTopnav } from "../../components";
+import { WbFooter, WbSecondNav, WbTopnav } from "../../components";
 
 const LayoutWebsite = () => {
   return (
@@ -15,6 +15,7 @@ const LayoutWebsite = () => {
       <main>
         <Outlet />
       </main>
+      <WbFooter />
     </>
   );
 };

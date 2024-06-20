@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const WbLogoSvg = () => {
   return (
-    <Link to={`#`}>
+    <Link to={`/`}>
       <svg
         width="167"
         height="58"

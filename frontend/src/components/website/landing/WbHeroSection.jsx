@@ -16,12 +16,7 @@ const WbHeroSection = () => {
         <div className="row">
           <div className="col-md-12 col-xl-6 mt-n5">
             <div>
-              <h1
-                className="hero-one-title fw-bold"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-easing="linear"
-              >
+              <h1 className="hero-one-title fw-bold">
                 Find Your Perfect
                 <span className="highlighted-text"> Freelancer </span>
                 Quick and Easy
@@ -31,9 +26,7 @@ const WbHeroSection = () => {
                   <div className="hero-form-wrapper bg-white d-flex position-relative">
                     <div>
                       <select className="form-select shadow-none">
-                        <option value="0" selected>
-                          All Categories
-                        </option>
+                        <option value="">All Categories</option>
                         <option value="1">Animation</option>
                         <option value="2">Web Design</option>
                         <option value="3">Graphics</option>
