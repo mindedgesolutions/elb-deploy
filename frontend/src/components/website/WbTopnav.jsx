@@ -86,19 +86,19 @@ const WbTopnav = () => {
               </ul>
               <div className="d-flex align-items-center gap-4 mt-4">
                 <div className="d-flex d-lg-none">
-                  <a href="signin.html" className="header-btn">
+                  <Link to={`/sign-in`} className="header-btn">
                     <FaUser size={14} style={{ borderRadius: "50%" }} />
                     Login
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="navbar-right d-flex align-items-center gap-4">
               <div className="align-items-center d-none d-lg-flex">
-                <a href="signin.html" className="w-btn-secondary-lg">
+                <Link to={`/sign-in`} className="w-btn-secondary-lg">
                   <FaUser size={14} style={{ borderRadius: "50%" }} />
                   Login
-                </a>
+                </Link>
               </div>
               <button
                 className="navbar-toggler d-block d-xl-none"

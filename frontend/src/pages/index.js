@@ -23,3 +23,4 @@ export { default as FormFields } from "./admin/formFields/FormFields";
 export { default as LayoutWebsite } from "./website/LayoutWebsite";
 export { default as Landing } from "./website/Landing";
 export { default as WbAbout } from "./website/WbAbout";
+export { default as WbLogin } from "./website/WbLogin";

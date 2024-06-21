@@ -19,7 +19,7 @@ export const paginationLogic = (page, limit) => {
 export const generateSlug = async (firstName, lastName) => {
   let newSlug = slug(`${firstName} ${lastName}`);
   const checkCount = await pool.query(
-    `select count(*) from master_users where slug='$1'`,
+    `select count(*) from master_users where slug=$1`,
     [newSlug]
   );
   const userSlug =

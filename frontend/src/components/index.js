@@ -38,3 +38,14 @@ export { default as WbHeroSection } from "./website/landing/WbHeroSection";
 export { default as WbAboutFeatures } from "./website/about/WbAboutFeatures";
 export { default as WbAboutCo } from "./website/about/WbAboutCo";
 export { default as WbAboutCta } from "./website/about/WbAboutCta";
+
+// Website icons ------
+export { default as FaceBook } from "./website/icons/FaceBook";
+export { default as Google } from "./website/icons/Google";
+export { default as LinkedIn } from "./website/icons/LinkedIn";
+export { default as Twitter } from "./website/icons/Twitter";
+export { default as Xhandle } from "./website/icons/Xhandle";
+export { default as Instagram } from "./website/icons/Instagram";
+
+// Website notification handlers ------
+export { default as ErrorModal } from "./website/notifications/ErrorModal";

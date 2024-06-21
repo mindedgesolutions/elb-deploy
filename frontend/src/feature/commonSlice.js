@@ -5,6 +5,9 @@ const initialState = {
   totalPages: 0,
   currentPage: 1,
   changeCount: 0,
+  errorTitle: "",
+  errorMsg: "",
+  errorModal: false,
 };
 
 const commonSlice = createSlice({
@@ -24,8 +27,22 @@ const commonSlice = createSlice({
       state.totalPages = 0;
       state.currentPage = 1;
     },
+    setErrorModal: (state, action) => {
+      state.errorMsg = action.payload.msg;
+      state.errorModal = true;
+    },
+    unsetErrorModal: (state) => {
+      state.errorMsg = "";
+      state.errorModal = false;
+    },
   },
 });
 
-export const { updateCount, setTotal, unsetTotal } = commonSlice.actions;
+export const {
+  updateCount,
+  setTotal,
+  unsetTotal,
+  setErrorModal,
+  unsetErrorModal,
+} = commonSlice.actions;
 export default commonSlice.reducer;

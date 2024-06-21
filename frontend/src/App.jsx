@@ -5,6 +5,7 @@ import Landing from "./pages/website/Landing";
 
 // Actions ------
 import { action as loginAction } from "./pages/admin/auth/Login";
+import { action as wbLoginAction } from "./pages/website/WbLogin";
 import { action as registerAction } from "./pages/admin/auth/Register";
 import { action as forgotPasswordAction } from "./pages/admin/auth/ForgotPassword";
 
@@ -20,15 +21,14 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Landing /> },
       { path: "/about", element: <Elb.WbAbout /> },
+      {
+        path: "/sign-in",
+        element: <Elb.WbLogin />,
+        action: wbLoginAction(store),
+      },
     ],
   },
   // Admin routes ------
-  {
-    path: "/sign-in",
-    element: <Elb.Login />,
-    errorElement: <Elb.Error />,
-    action: loginAction,
-  },
   {
     path: "/sign-up",
     element: <Elb.Register />,
